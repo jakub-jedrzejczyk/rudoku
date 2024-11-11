@@ -3,9 +3,9 @@ mod terminal_utils;
 fn main() {
     let _ = terminal_utils::clear_screen();
     let size = terminal_utils::size();
-    let x = size.0;
-    let y = size.1;
+    let (x, y) = size;
 
-    println!("({x}, {y})");
+    let _ = terminal_utils::set_size(50, 25);
+    terminal_utils::write(format!("({x}, {y})").to_string());
 }
 
