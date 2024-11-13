@@ -1,11 +1,12 @@
-mod terminal_utils;
+mod tui;
+mod game;
 
 fn main() {
-    let _ = terminal_utils::clear_screen();
-    let size = terminal_utils::size();
-    let (x, y) = size;
+    let g = game::Game::new(3, 3);
+    let (x, y) = g.calculate_canvas_size();
 
-    let _ = terminal_utils::set_size(50, 25);
-    terminal_utils::write(format!("({x}, {y})").to_string());
+    println!("{x}, {y}");
+
+    g.start();
 }
 

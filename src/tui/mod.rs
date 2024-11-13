@@ -18,12 +18,6 @@ pub fn size() -> (u16, u16) {
     };
 }
 
-pub fn set_size(width: u16, height: u16) -> io::Result<()> {
-    let mut stdout = io::stdout();
-    execute!(stdout, terminal::SetSize(width, height))?;
-    Ok(())
-}
-
 pub fn write(str: String) {
     let mut stdout = io::stdout();
     write!(stdout, "{str}");
