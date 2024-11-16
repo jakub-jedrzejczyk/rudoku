@@ -51,10 +51,12 @@ impl Game {
                 maybe_event = event => {
                     match maybe_event {
                         Some(Ok(event)) => {
-                            println!("Event: {:?}\r", event);
+                            //println!("Event: {:?}\r", event);
 
                             if event == Event::Key(KeyCode::Char('c').into()) {
-                                println!("C pressed!");
+                                //println!("C pressed!");
+                                tui::draw_vertical_line(&std::io::stdout(), '|', 7, 3, 5);
+                                tui::flush(&std::io::stdout());
                             }
 
                             if event == Event::Key(KeyCode::Esc.into()) {
@@ -72,9 +74,8 @@ impl Game {
     }
 
     pub fn start(&self) -> io::Result<()> {
-        enable_raw_mode()?;
         async_std::task::block_on(self.read_events());
-        disable_raw_mode()
+        Ok(())
     }
 }
 
