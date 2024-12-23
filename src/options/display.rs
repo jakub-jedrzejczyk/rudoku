@@ -1,6 +1,8 @@
-pub struct Settings {
-    field_height: u16,
-    field_width: u16,
+pub struct DisplayOptions {
+    padding_left: u16,
+    padding_right: u16,
+    padding_top: u16,
+    padding_bottom: u16,
     inner_border_horizontal: u16,
     inner_border_vertical: u16,
     outer_border_horizontal: u16,
@@ -14,11 +16,13 @@ pub struct Settings {
     center_board: bool
 }
 
-impl Settings {
-    pub fn new() -> Settings {
-        Settings {
-            field_height: 3,
-            field_width: 3,
+impl DisplayOptions {
+    pub fn new() -> DisplayOptions {
+        DisplayOptions {
+            padding_left: 1,
+            padding_right: 1,
+            padding_top: 1, 
+            padding_bottom: 1,
             inner_border_horizontal: 1,
             inner_border_vertical: 1,
             outer_border_horizontal: 1,
@@ -26,19 +30,27 @@ impl Settings {
             inner_horizontal_char: '-',
             inner_vertical_char: '|',
             inner_intersection_char: '+',
-            outer_horizontal_char: '═',
-            outer_vertical_char: '║',
-            outer_intersection_char: '╬',
+            outer_horizontal_char: '-',
+            outer_vertical_char: '|',
+            outer_intersection_char: '+',
             center_board: true
         }
     }
 
-    pub fn get_field_height(&self) -> u16 {
-        self.field_height 
+    pub fn get_padding_left(&self) -> u16 {
+        self.padding_left
     }
 
-    pub fn get_field_width(&self) -> u16 {
-        self.field_width 
+    pub fn get_padding_right(&self) -> u16 {
+        self.padding_right
+    }
+
+    pub fn get_padding_top(&self) -> u16 {
+        self.padding_top
+    }
+    
+    pub fn get_padding_bottom(&self) -> u16 {
+        self.padding_bottom
     }
 
     pub fn get_inner_border_horizontal(&self) -> u16 {
@@ -83,14 +95,6 @@ impl Settings {
 
     pub fn get_center_board(&self) -> bool {
         self.center_board 
-    }
-
-    pub fn set_field_height(&mut self, field_height: u16) {
-        self.field_height = field_height;
-    }
-
-    pub fn set_field_width(&mut self, field_width: u16) {
-        self.field_width = field_width;
     }
 
     pub fn set_inner_border_horizontal(&mut self, inner_border_horizontal: u16) {

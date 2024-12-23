@@ -1,15 +1,14 @@
-use async_std::io;
-use tui::clear_screen;
-use logic::game;
+use app::app::App;
 
+mod app;
+mod dto;
 mod logic;
+mod options;
 mod tui;
 
 fn main() {
-    let g = game::Game::new(3, 3, std::io::stdout());
-
     let mut stdout = std::io::stdout();
-    g.start();
-    clear_screen();
+
+    let rudoku_app = App::new();
 }
 

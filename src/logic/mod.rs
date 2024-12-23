@@ -1,2 +1,4 @@
 pub mod game;
-pub mod settings;
+pub mod board;
+pub mod region;
+pub mod cell;
